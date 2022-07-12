@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Find the magic!</title>
+</head>
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>Greeting!</p>
+            <p>Your task is to find the magic in the world. 
+                To do this, you need to seek guidance from people.</p>
+            <div class="center">
+                <button id="modalButton" class="button" type="submit">Start</button>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li><a id="navbarGame" class="active">Game</a></li>
+        <li><a id="navbarAchievements" class="general">Achievements</a></li>
+        <li><a id="navbarSettings" class="general">Settings</a></li>
+    </ul>
+    <div id="resourcesDiv">
+        <div id="pplMoneyDiv" class="general generalDiv">
+            <div id="peopleLimitDiv" class="general">
+                <span>People: </span><span id="peopleTalkedSpan">0</span><span> / </span><span>8 000 000 000</span>
+                <span>(+</span><span id="talkPowerSpan">1</span><span>/s)</span>
+                <span id="resTextSpan" class="general">Res: </span><span id="talkResSpan" class="general"><span id="resValueSpan">99,99</span><span>%</span></span>
+            </div>
+            <div id="moneyDiv" class="general">
+                <span>Coins: </span><span id="moneySpan">0</span>
+                <span>(+</span><span id="workPowerSpan">0.10</span><span>/s)</span>
+            </div>
+        </div>
+        <div class="generalDiv">
+                <span>Talk: </span>
+                <label id="talkAutomationLabel" class="switch">
+                    <input id="talkAutomationButton" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+        </div>
+        <div id="workDiv" class="general generalDiv">
+                <span>Work: </span>
+                <label id="workAutomationLabel" class="switch">
+                    <input id="workAutomationButton" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+        </div>
+        <div id="shopDiv" class="general generalDiv">
+            <p>Shop</p>
+            <div id="shopItemDiv01" class="general shopDiv">
+                <span>Pay raise I. [+0.1/C]</span>
+                <button id="shopButton01" class="shopButton" type="submit">Costs: 3 Coins</button>
+            </div>
+            <div id="shopItemDiv02" class="general shopDiv">
+                <span>Promotion I. [+0.1 C/s]</span>
+                <button id="shopButton02" class="shopButton" type="submit">Costs: 8 Coins</button>
+            </div>
+            <div id="shopItemDiv03" class="general shopDiv">
+                <span>Pay raise II. [+0.2 C/s]</span>
+                <button id="shopButton03" class="shopButton" type="submit">Costs: 15 Coins</button>
+            </div>
+            <div id="shopItemDiv04" class="general shopDiv">
+                <span>Promotion II. [+0.2 C/s]</span>
+                <button id="shopButton04" class="shopButton" type="submit">Costs: 30 Coins</button>
+            </div>
+            <div id="shopItemDiv05" class="general shopDiv">
+                <span>Be charmer I. [-0.01 Res]</span>
+                <button id="shopButton05" class="shopButton" type="submit">Costs: 48 Coins</button>
+            </div>
+        </div>
+    </div>
+    <div id="achievementDiv" class="general">
+        <div class="generalDiv">
+            <span>Total coins: </span><span id="moneyTotalSpan">0</span>
+        </div>
+        <div class="generalDiv">
+            <p>Achievements</p>
+            <div id="achievementDiv01" class="achievementDiv">Your first 10 Coin!</div>
+            <div id="achievementDiv02" class="achievementDiv">Your first 100 Coin!</div>
+            <div id="achievementDiv03" class="achievementDiv">Your first 1000 Coin!</div>
+        </div>
+        <div class="generalDiv">
+            <p>Reward: <span id="rewardTextSpan"></span></p>
+        </div>
+    </div>
+    <div id="researchDiv" class="general">
+        <div class="generalDiv">
+            <p>Researches</p>
+        </div>
+    </div>
+    <div id="settingsDiv" class="general">
+        <div class="generalDiv">
+            <p>Settings</p>
+            <p>Auto save time: 30 sec</p>
+            <button id="saveButton" class="button" type="submit">Save</button>
+            <button id="deleteButton" class="button" type="submit">Delete</button>
+            <p>Version: 0.0.1</p>
+        </div>
+    </div>
+    
+    <script type="module" src="index.js"></script>
+</body>
+</html>
