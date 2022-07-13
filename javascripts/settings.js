@@ -117,10 +117,10 @@ export function autoSave() {
 }
 
 export function deleteSave() {
-    //if(confirm("are you really want to delete all data?")) {
+    if(confirm("are you really want to delete all data?")) {
         localStorage.removeItem("save");
         document.getElementById("talkAutomationButton").checked = false;
         document.getElementById("workAutomationButton").checked = false;
         location.reload();
-    //}
+    }
 }
