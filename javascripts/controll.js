@@ -1,8 +1,10 @@
-import { work } from "../index.js";
+import { talk, work } from "../index.js";
 import { achievementItem01, achievementItem02, 
-    achievementItem03 } from "./achievement.js";
+    achievementItem03, achievementItem04, 
+    achievementItem05, achievementItem06 } from "./achievement.js";
 import { shopItem01, shopItem02,
-    shopItem03, shopItem04, shopItem05 } from "./shop.js";
+    shopItem03, shopItem04, shopItem05,
+    shopItem06, shopItem07, shopItem08 } from "./shop.js";
 
 const myModal = document.getElementById("myModal");
 
@@ -36,7 +38,10 @@ const shopButtonShowLimit01 = 1;
 const shopButtonShowLimit02 = 1;
 const shopButtonShowLimit03 = 1;
 const shopButtonShowLimit04 = 1;
-const shopButtonShowLimit05 = 1;*/
+const shopButtonShowLimit05 = 1;
+const shopButtonShowLimit06 = 1;
+const shopButtonShowLimit07 = 1;
+const shopButtonShowLimit08 = 1;*/
 
 const peopleShowLimit = 3;
 const workShowLimit = 10;
@@ -45,9 +50,12 @@ export const resShowLimit = 20;
 const shopShowLimit = 3;
 const shopButtonShowLimit01 = 1;
 const shopButtonShowLimit02 = 5;
-const shopButtonShowLimit03 = 11;
-const shopButtonShowLimit04 = 22;
+const shopButtonShowLimit03 = 12;
+const shopButtonShowLimit04 = 25;
 const shopButtonShowLimit05 = 33;
+const shopButtonShowLimit06 = 46;
+const shopButtonShowLimit07 = 82;
+const shopButtonShowLimit08 = 133;
 
 const navbarAchievementsShowLimit = 1;
 const navbarSettingsShowLimit = 1;
@@ -57,11 +65,17 @@ const shopItemDiv02 = document.getElementById("shopItemDiv02");
 const shopItemDiv03 = document.getElementById("shopItemDiv03");
 const shopItemDiv04 = document.getElementById("shopItemDiv04");
 const shopItemDiv05 = document.getElementById("shopItemDiv05");
+const shopItemDiv06 = document.getElementById("shopItemDiv06");
+const shopItemDiv07 = document.getElementById("shopItemDiv07");
+const shopItemDiv08 = document.getElementById("shopItemDiv08");
 const shopButton01 = document.getElementById("shopButton01");
 const shopButton02 = document.getElementById("shopButton02");
 const shopButton03 = document.getElementById("shopButton03");
 const shopButton04 = document.getElementById("shopButton04");
 const shopButton05 = document.getElementById("shopButton05");
+const shopButton06 = document.getElementById("shopButton06");
+const shopButton07 = document.getElementById("shopButton07");
+const shopButton08 = document.getElementById("shopButton08");
 
 export default class Controll {
     static closeModal() {
@@ -115,6 +129,21 @@ export default class Controll {
         } else if(moneyActual <= shopItem05.price && !shopItem05.isBought) {
             shopButton05.style.backgroundColor = "red";
         }
+        if(moneyActual >= shopItem06.price && !shopItem06.isBought) {
+            shopButton06.style.backgroundColor = "green";
+        } else if(moneyActual <= shopItem06.price && !shopItem06.isBought) {
+            shopButton06.style.backgroundColor = "red";
+        }
+        if(moneyActual >= shopItem07.price && !shopItem07.isBought) {
+            shopButton07.style.backgroundColor = "green";
+        } else if(moneyActual <= shopItem07.price && !shopItem07.isBought) {
+            shopButton07.style.backgroundColor = "red";
+        }
+        if(moneyActual >= shopItem08.price && !shopItem08.isBought) {
+            shopButton08.style.backgroundColor = "green";
+        } else if(moneyActual <= shopItem08.price && !shopItem08.isBought) {
+            shopButton08.style.backgroundColor = "red";
+        }
         if(moneyAll >= shopButtonShowLimit01 && !shopItem01.isBought) {
             shopItemDiv01.style.display = "block";
         }
@@ -129,6 +158,15 @@ export default class Controll {
         }
         if(moneyAll >= shopButtonShowLimit05 && !shopItem05.isBought) {
             shopItemDiv05.style.display = "block";
+        }
+        if(moneyAll >= shopButtonShowLimit06 && !shopItem03.isBought) {
+            shopItemDiv06.style.display = "block";
+        }
+        if(moneyAll >= shopButtonShowLimit07 && !shopItem04.isBought) {
+            shopItemDiv07.style.display = "block";
+        }
+        if(moneyAll >= shopButtonShowLimit08 && !shopItem05.isBought) {
+            shopItemDiv08.style.display = "block";
         }
     
         if(moneyAll >= navbarAchievementsShowLimit) {
@@ -167,6 +205,36 @@ export default class Controll {
             
             that.setAchEarnedColor(achievementItem03.domObj);
             that.updateText({ domObj: workPowerSpan, value: workPowerText });
+        }
+        if(moneyAll >= achievementItem04.earnLimit && !achievementItem04.isEarned) {
+            achievementItem04.isEarned = true;
+            work.workPower += 0.2;
+
+            let that = this;
+            let workPowerText = work.workPower.toFixed(2).toString();
+
+            that.setAchEarnedColor(achievementItem04.domObj);
+            that.updateText({ domObj: workPowerSpan, value: workPowerText });
+        }
+        if(moneyAll >= achievementItem05.earnLimit && !achievementItem05.isEarned) {
+            achievementItem05.isEarned = true;
+            work.workPower += 0.15;
+
+            let that = this;
+            let workPowerText = work.workPower.toFixed(2).toString();
+            
+            that.setAchEarnedColor(achievementItem05.domObj);
+            that.updateText({ domObj: workPowerSpan, value: workPowerText });
+        }
+        if(peopleTalked >= achievementItem06.earnLimit && !achievementItem06.isEarned) {
+            achievementItem06.isEarned = true;
+            talk.talkResistanceMin += 1;
+
+            let that = this;
+            let talkResistanceText = (100 - talk.talkResistanceMin / talk.talkResistanceMax * 100).toFixed(2).toString();
+
+            that.setAchEarnedColor(achievementItem06.domObj);
+            that.updateText({ domObj: resValueSpan, value: talkResistanceText });
         }
     }
 

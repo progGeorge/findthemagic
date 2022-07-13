@@ -2,7 +2,7 @@ body {
     background-color: black;
     color: white;
     margin: 0;
-    font-size: 18px;
+    font-size: 17px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -18,8 +18,8 @@ body {
     text-decoration: none;
     /*display: inline-block;*/
     border-radius: 12px;
-    font-size: 18px;
-    width: 165px;
+    font-size: 17px;
+    width: 166px;
     /*float: right;*/
 }
 
@@ -31,16 +31,16 @@ body {
     text-decoration: none;
     display: inline-block;
     border-radius: 12px;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .generalDiv {
     position: relative;
     border: 1px solid gray;
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 15px;
     margin: 10px;
-    width: 48%;
+    width: 24%;
     background-color: rgb(42, 29, 221);
 }
 
@@ -51,7 +51,7 @@ body {
 .general.shopDiv {
     background-color: rgb(73, 111, 236);
     padding: 4px 12px;
-    margin: 6px 0px;
+    margin: 8px 0px;
     border-radius: 12px;
     box-shadow: 4px 4px darkblue;
     border: 2px solid blue;
@@ -59,8 +59,8 @@ body {
 
 .achievementDiv {
     background-color: rgb(164, 0, 0);
-    padding: 4px 12px;
-    margin: 6px 0px;
+    padding: 6px 12px;
+    margin: 8px 0px;
     border-radius: 12px;
     box-shadow: 4px 4px black;
     border: 2px solid darkred;
@@ -68,10 +68,10 @@ body {
 
 .general.generalDiv {
     border: 1px solid gray;
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 15px;
     margin: 10px;
-    width: 48%;
+    width: 24%;
     background-color: rgb(42, 29, 221);
 }
 
@@ -116,8 +116,8 @@ li a:hover:not(.active) {
 .switch {
     position: absolute;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 54px;
+    height: 30px;
     margin: 0;
     top: 50%;
     -ms-transform: translateY(-50%);
@@ -145,9 +145,9 @@ li a:hover:not(.active) {
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
+    height: 22px;
+    width: 22px;
+    left: 3px;
     bottom: 4px;
     background-color: white;
     -webkit-transition: .4s;

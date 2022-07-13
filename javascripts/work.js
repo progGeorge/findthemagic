@@ -46,6 +46,9 @@ export default class Work {
         this.moneyActual += this.workPower;
         this.moneyAll += this.workPower;
 
+        this.moneyActual = Math.round(this.moneyActual * 1000000) / 1000000;
+        this.moneyAll = Math.round(this.moneyAll * 1000000) / 1000000;
+
         let moneyActualText = this.moneyActual.toFixed(2).toString();
         let moneyTotalText = this.moneyAll.toFixed(2).toString();
         let workPowerText = this.workPower.toFixed(2).toString();
