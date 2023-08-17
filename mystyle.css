@@ -10,21 +10,19 @@ body {
     display: none;
 }
 
-.shopButton {
+.redButton {
     background-color: red;
-    color: white;
+    color: black;
     padding: 3px 16px;
     text-align: center;
     text-decoration: none;
-    /*display: inline-block;*/
+    display: inline-block;
     border-radius: 12px;
     font-size: 17px;
-    width: 166px;
-    /*float: right;*/
 }
 
-.button {
-    background-color: white;
+.greenButton {
+    background-color: green;
     color: black;
     padding: 3px 16px;
     text-align: center;
@@ -40,8 +38,34 @@ body {
     border-radius: 12px;
     padding: 15px;
     margin: 10px;
+    width: 25%;
+    background-color: rgb(42, 29, 221);
+}
+
+.achievementDiv {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 0px;
+    border: 1px solid gray;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px;
     width: 24%;
     background-color: rgb(42, 29, 221);
+    animation-name: animateright;
+    animation-duration: 1s
+}
+
+@keyframes animateright {
+    from {right: -300px; opacity: 0}
+    to {right: 0; opacity: 1}
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .switch.general {
@@ -57,7 +81,7 @@ body {
     border: 2px solid blue;
 }
 
-.achievementDiv {
+.achievementDiv2 {
     background-color: rgb(164, 0, 0);
     padding: 6px 12px;
     margin: 8px 0px;
@@ -82,7 +106,7 @@ body {
     text-align: center;
 }
 
-/* START navbar */
+/* START - navbar */
 ul {
     list-style-type: none;
     margin: 0;
@@ -101,6 +125,7 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    cursor: pointer;
 }
   
 li a:hover:not(.active) {
@@ -110,6 +135,7 @@ li a:hover:not(.active) {
 .active {
     background-color: #1faab7;
 }
+
 /* END - navbar */
 
 /* START - toogle switch */

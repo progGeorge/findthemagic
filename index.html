@@ -12,110 +12,212 @@
             <p>Your task is to find the magic in the world. 
                 To do this, you need to seek guidance from people.</p>
             <div class="center">
-                <button id="modalButton" class="button" type="submit">Start</button>
+                <button id="modalButton" class="greenButton" type="submit">Start</button>
             </div>
         </div>
     </div>
     <ul>
         <li><a id="navbarGame" class="active">Game</a></li>
-        <li><a id="navbarAchievements" class="general">Achievements</a></li>
-        <li><a id="navbarSettings" class="general">Settings</a></li>
+        <li><a id="navbarShop" class="general">Shop</a></li>
+        <li><a id="navbarTravelling" class="general">Travelling</a></li>
+        <li><a id="navbarAchievements">Achievements</a></li>
+        <li><a id="navbarSettings">Settings</a></li>
     </ul>
-    <div id="resourcesDiv">
-        <div id="pplMoneyDiv" class="general generalDiv">
-            <div id="peopleLimitDiv" class="general">
-                <span>People: </span><span id="peopleTalkedSpan">0</span><span> / </span><span>8 000 000 000</span>
-                <span>(+</span><span id="talkPowerSpan">1</span><span>/s)</span>
-                <span id="resTextSpan" class="general">Res: </span><span id="talkResSpan" class="general"><span id="resValueSpan">99,99</span><span>%</span></span>
-            </div>
-            <div id="moneyDiv" class="general">
-                <span>Coins: </span><span id="moneySpan">0</span>
-                <span>(+</span><span id="workPowerSpan">0.10</span><span>/s)</span>
-            </div>
-        </div>
+    <div id="gameDiv">
         <div class="generalDiv">
-                <span>Talk: </span>
-                <label id="talkAutomationLabel" class="switch">
-                    <input id="talkAutomationButton" type="checkbox">
-                    <span class="slider round"></span>
-                </label>
+            <span>Talks: </span><span id="talkAmountID">0</span><span>/</span><span id="zoneLimitID">100</span>
+            <span id="talkTimeCounterID" class="general"><span> (</span><span id="talkTimeID">0</span><span>sec)</span></span>
+            <div id="talkPowerAutoDiv" class="general"><span> (</span><span id="talkPowerAutoID"></span><span>/s)</span></div>
+            <button id="talkButton" class="greenButton">
+                <span>Talk! </span><span>(</span><span id="talkWaitTimeCurrentID">5</span><span>)</span>
+            </button>
+            <br>
+            <span>Resistance: </span><span id="resistanceAmountID">0</span><span> %</span>
         </div>
-        <div id="workDiv" class="general generalDiv">
-                <span>Work: </span>
-                <label id="workAutomationLabel" class="switch">
-                    <input id="workAutomationButton" type="checkbox">
-                    <span class="slider round"></span>
-                </label>
+        <div id="workDiv" class="general">
+            <span>Coins: </span><span id="coinAmountID">0</span>
+            <div id="coinAmountPowerDiv" class="general"><span> (</span><span id="coinAmountPowerID">0</span><span>/s)</span></div>
+            <br>
+            <button id="workButton" class="greenButton">
+                <span>Work! </span><span>(</span><span id="workTimeID">30</span><span>)</span>
+            </button>
+            <span id="workCoinTextID">Coin: +</span><span id="workCoinID">0.4</span>
+            <br>
         </div>
-        <div id="shopDiv" class="general generalDiv">
-            <p>Shop</p>
-            <div id="shopItemDiv01" class="general shopDiv">
-                <span>Pay raise I. [+0.1/C]</span>
-                <button id="shopButton01" class="shopButton" type="submit">Costs: 3 Coins</button>
+        <div id="studyDiv" class="general">
+            <span>Study points: </span><span id="studyPointsAmountID">0</span><span>/</span><span id="studyPointsAmountLimitID">2</span>
+            <span>(</span><span id="studyPointsTimeID">0</span><span> sec)</span>
+            <button id="studyPointsLevelUpButton" class="redButton">
+                <span>Level up! (</span><span id="studyPointsLevelUpCostID">1</span><span> SP)</span>
+            </button>
+            <br>
+            <span> (</span><span id="studyPointsPowerID">0.01</span><span>/sec)</span>
+            <br>
+            <span>Double study chance: </span><span id="studyPointsDoubleChanceID">0</span><span> %</span>
+            <br>
+        </div>
+        <div id="motivationDiv" class="general">
+            <span>Motivation level: </span><span id="motivationLevelID">0</span><span id="motivationLevelMaxID" class="general"> (Max!)</span>
+            <br>
+            <span>Motivation: </span><span id="motivationAmountID">0</span><span>/</span><span id="motivationAmountLimitID">1</span>
+            <span>(</span><span id="motivationTimeID">0</span><span> sec)</span>
+            <button id="motivationLevelUpButton" class="redButton">
+                <span>Level up! (</span><span id="motivationLevelUpCostID">0</span><span> SP)</span>
+            </button>
+            <br>
+            <span> (</span><span id="motivationPowerID">0</span><span>/sec)</span><span> (Talk / 10000)</span>
+            <br>
+            <span> SP bonus: </span><span id="motivationSPBonusID">0</span><span> (Motivation level / </span><span id="motivationSPRatioID">100</span><span>)</span>
+        </div>
+    </div>
+    <div id="shopDiv" class="general">
+        <div class="generalDiv">
+            <div>
+                <p><span>Coins: </span><span id="coinAmountID2">0</span></p>
+                <p id="shopStudyPointsDisplayID" class="general"><span>Study points: </span><span id="studyPointsAmountID2">0</span></p>
+                <p id="shopMotivationDisplayID" class="general"><span>Motivation: </span><span id="motivationAmountID2">0</span></p>
             </div>
-            <div id="shopItemDiv02" class="general shopDiv">
-                <span>Promotion I. [+0.1 C/s]</span>
-                <button id="shopButton02" class="shopButton" type="submit">Costs: 8 Coins</button>
+            <div id="shopTalkDiv" class="general">
+                <span id="shopItem05">
+                    <button id="shopButton05" class="redButton">
+                        <span>Buy! (</span><span id="shopAmountID05C">0.5</span><span> C)</span>
+                    </button>
+                    <span>-1 talk sec (Current: </span><span id="shopTalkWaitTimeMaxID">60</span><span>) </span>
+                    <span id="shopTime05CounterID" class="general"><span>(</span><span id="shopTime05">0</span><span> sec)</span></span>
+                    <br>
+                </span>
+                <button id="shopButton06" class="redButton">
+                    <span>Buy! (</span><span id="shopAmountID06C">0.5</span><span> C)</span>
+                </button>
+                <span>-1% resistance </span>
+                <span id="shopTime06CounterID" class="general"><span>(</span><span id="shopTime06">0</span><span> sec)</span></span><span id="resistanceLevelMaxID" class="general"> (Max!)</span>
             </div>
-            <div id="shopItemDiv03" class="general shopDiv">
-                <span>Pay raise II. [+0.2 C/s]</span>
-                <button id="shopButton03" class="shopButton" type="submit">Costs: 18 Coins</button>
+            <br>
+            <br>
+            <div id="shopCoinDiv" class="general">
+                <button id="shopButton01" class="redButton">
+                    <span>Buy! (</span><span id="shopAmountID01SP">0.01</span><span> SP)</span>
+                </button>
+                <span>+0.01 min coins </span><span>(</span><span id="workCoinMinID">0.2</span><span>)</span>
+                <span id="shopTime01CounterID" class="general"><span>(</span><span id="shopTime01">0</span><span> sec)</span></span>
+                <br>
+                <button id="shopButton02" class="redButton">
+                    <span>Buy! (</span><span id="shopAmountID02SP">0.1</span><span> SP)</span>
+                </button>
+                <span>+0.01 max coins </span><span>(</span><span id="workCoinMaxID">0.6</span><span>)</span>
+                <span id="shopTime02CounterID" class="general"><span>(</span><span id="shopTime02">0</span><span> sec)</span></span>
+                <br>
+                <span id="shopItem03">
+                    <button id="shopButton03" class="redButton">
+                        <span>Buy! (</span><span id="shopAmountID03SP">1</span><span> SP)</span>
+                    </button>
+                    <span>-1 work sec (Current: </span><span id="shopWorkWaitTimeMaxID">30</span><span>) </span>
+                    <span id="shopTime03CounterID" class="general"><span>(</span><span id="shopTime03">0</span><span> sec)</span></span>
+                    <br>
+                </span>
+                <button id="shopButton04" class="redButton">
+                    <span>Buy! (</span><span id="shopAmountID04SP">1</span><span> SP)</span>
+                </button>
+                <span>+2% double coin chance </span><span>(</span><span id="workDoubleChanceID">0</span><span>%)</span>
+                <span id="shopTime04CounterID" class="general"><span>(</span><span id="shopTime04">0</span><span> sec)</span></span>
             </div>
-            <div id="shopItemDiv04" class="general shopDiv">
-                <span>Promotion II. [+0.2 C/s]</span>
-                <button id="shopButton04" class="shopButton" type="submit">Costs: 33 Coins</button>
-            </div>
-            <div id="shopItemDiv05" class="general shopDiv">
-                <span>Be charmer I. [-0.01 Res]</span>
-                <button id="shopButton05" class="shopButton" type="submit">Costs: 48 Coins</button>
-            </div>
-            <div id="shopItemDiv06" class="general shopDiv">
-                <span>Pay raise III. [+0.2 C/s]</span>
-                <button id="shopButton06" class="shopButton" type="submit">Costs: 60 Coins</button>
-            </div>
-            <div id="shopItemDiv07" class="general shopDiv">
-                <span>Promotion III. [+0.2 C/s]</span>
-                <button id="shopButton07" class="shopButton" type="submit">Costs: 105 Coins</button>
-            </div>
-            <div id="shopItemDiv08" class="general shopDiv">
-                <span>Promotion IV. [+0.3 C/s]</span>
-                <button id="shopButton08" class="shopButton" type="submit">Costs: 162 Coins</button>
+            <br>
+            <br>
+            <div id="shopMotivationDiv" class="general">
+                <span id="shopItem07">
+                    <button id="shopButton07" class="redButton">
+                        <span>Buy! (</span><span id="shopAmountID07M">0.1</span><span> M)</span>
+                    </button>
+                    <span>-2 motivation ratio reduction </span><span>(</span><span id="shopTime07">0</span><span> sec)</span>
+                </span>
             </div>
         </div>
     </div>
-    <div id="achievementDiv" class="general">
+    <div id="travellingDiv" class="general">
         <div class="generalDiv">
-            <span>Total coins: </span><span id="moneyTotalSpan">0</span>
-        </div>
-        <div class="generalDiv">
-            <p>Achievements</p>
-            <div id="achievementDiv01" class="achievementDiv">Your first 10 Coins!</div>
-            <div id="achievementDiv02" class="achievementDiv">Your first 100 Coins!</div>
-            <div id="achievementDiv03" class="achievementDiv">Your first 1000 Coins!</div>
-            <div id="achievementDiv04" class="achievementDiv">Your first 10000 Coins!</div>
-            <div id="achievementDiv05" class="achievementDiv">Your first 100000 Coins!</div>
-            <div id="achievementDiv06" class="achievementDiv">Your first 20 Talks!</div>
-        </div>
-        <div class="generalDiv">
-            <p>Reward: <span id="rewardTextSpan"></span></p>
+            <span>Congratulations! You have reached the end of version 0.0.1!</span>
         </div>
     </div>
-    <div id="researchDiv" class="general">
+    <div id="achievementsDiv" class="general">
         <div class="generalDiv">
-            <p>Research Points: </p>
-            <span id="researchPointSpan">0</span><span> / </span><span id="researchLimitSpan">1</span>
+            <span>Total talks: </span><span id="talkTotalAmountID">0</span>
+            <div id="talkTotalPowerAutoDiv" class="general"><span> (</span><span id="talkTotalPowerAutoID"></span><span>/s)</span></div>
+            <br>
+            <span>Total works: </span><span id="workTotalAmountID">0</span>
+            <div id="workTotalPowerDiv" class="general"><span> (</span><span id="workTotalPowerID">0.06</span><span>/s)</span></div>
+            <br>
+            <span>Total study points: </span><span id="studyPointsTotalAmountID">0</span>
+            <br>
+            <span>Achievements:</span>
+            <span id="achEarnedAmountID">0</span><span> / </span><span id="achAllAmountID">25</span><span> (</span><span id="achEarnedPercentID">0</span><span> %)</span>
+            <div id="achievementDiv01" class="achievementDiv2">Talk with 10 people | Bonus: working is enabled!</div>
+            <div id="achievementDiv02" class="achievementDiv2">Talk with 20 people | Bonus: +0.04 max coins</div>
+            <div id="achievementDiv03" class="achievementDiv2">Talk with 40 people | Bonus: +0.16 max coins</div>
+            <div id="achievementDiv04" class="achievementDiv2">Talk with 80 people | Bonus: +0.32 max coins</div>
+            <div id="achievementDiv05" class="achievementDiv2">Talk with 100 people | Bonus: travelling is enabled</div>
+            <div id="achievementDiv06" class="achievementDiv2">Try talk with 25 people | Bonus: +0.04 max coins</div>
+            <div id="achievementDiv07" class="achievementDiv2">Try talk with 50 people | Bonus: +0.08 max coins</div>
+            <div id="achievementDiv08" class="achievementDiv2">Try talk with 75 people | Bonus: +0.12 max coins</div>
+            <div id="achievementDiv09" class="achievementDiv2">Try talk with 100 people | Bonus: +0.16 max coins</div>
+            <div id="achievementDiv10" class="achievementDiv2">Try talk with 150 people | Bonus: +0.20 max coins</div>
+            <div id="achievementDiv11" class="achievementDiv2">Try talk with 250 people | Bonus: +0.24 max coins</div>
+            <div id="achievementDiv25" class="achievementDiv2">Reduce talk wait time max to 30 | Bonus: talking is automated!</div>
+            <div id="achievementDiv12" class="achievementDiv2">Work 5 times | Bonus: study is enabled!</div>
+            <div id="achievementDiv13" class="achievementDiv2">Work 25 times | Bonus: double SP chance: +1%</div>
+            <div id="achievementDiv14" class="achievementDiv2">Work 50 times | Bonus: double SP chance: +2%</div>
+            <div id="achievementDiv15" class="achievementDiv2">Work 100 times | Bonus: double SP chance: +3%</div>
+            <div id="achievementDiv16" class="achievementDiv2">Work 200 times | Bonus: double SP chance: +4%</div>
+            <div id="achievementDiv17" class="achievementDiv2">Reduce work wait time max to 15 | Bonus: working is automated!</div>
+            <div id="achievementDiv18" class="achievementDiv2">Total Study Points: 1.8 | Bonus: motivation is enabled!</div>
+            <div id="achievementDiv19" class="achievementDiv2">Total Study Points: 5 | Bonus: +2/10000 m/s</div>
+            <div id="achievementDiv20" class="achievementDiv2">Total Study Points: 10 | Bonus: +3/10000 m/s</div>
+            <div id="achievementDiv21" class="achievementDiv2">Total Study Points: 25 | Bonus: +4/10000 m/s</div>
+            <div id="achievementDiv22" class="achievementDiv2">Total Study Points: 50 | Bonus: +6/10000 m/s</div>
+            <div id="achievementDiv23" class="achievementDiv2">Total Study Points: 100 | Bonus: +8/10000 m/s</div>
+            <div id="achievementDiv24" class="achievementDiv2">Total Study Points: 250 | Bonus: +10/10000 m/s</div>
         </div>
-        <div class="generalDiv">
-            <p>Researches</p>
-        </div>
+    </div>
+    <div id="achievementEarnedID" class="achievementDiv">
+        <span id="achievementID"></span>
+        <span id="closeAchievementEarnedID" class="close">&times;</span>
     </div>
     <div id="settingsDiv" class="general">
         <div class="generalDiv">
             <p>Settings</p>
             <p>Auto save time: 30 sec</p>
-            <button id="saveButton" class="button" type="submit">Save</button>
-            <button id="deleteButton" class="button" type="submit">Delete</button>
-            <p>Version: 0.0.1</p>
+            <button id="saveButton" class="greenButton" type="submit">Save</button>
+            <button id="deleteButton" class="redButton" type="submit">Delete</button>
+            <p>WARNING! The save may be lost during a version update!</p>
+            <p>Version: 0.0.1 (2023.08.17.)</p>
+
+            <p>Upcoming:</p>
+            <span>- Travelling</span>
+            <br>
+            <span>- More zones</span>
+            <br>
+            <span>- More achievements and achievement bonus!</span>
+            <br>
+            <span>- Shards</span>
+            <br>
+            <span>- Offline progress</span>
+            <p>Changelog:</p>
+            <span>v0.0.1:</span>
+            <br>
+            <span>- Added: Talk</span>
+            <br>
+            <span>- Added: Work</span>
+            <br>
+            <span>- Added: Study</span>
+            <br>
+            <span>- Added: Motivation</span>
+            <br>
+            <span>- Added: Shop</span>
+            <br>
+            <span>- Added: Travelling (End Game!)</span>
+            <br>
+            <span>- Added: Achievements</span>
+            <br>
+            <span>- Added: Save/Load</span>
         </div>
     </div>
     <script type="module" src="index.js"></script>
