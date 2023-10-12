@@ -19,11 +19,20 @@
     <ul>
         <li><a id="navbarGame" class="active">Game</a></li>
         <li><a id="navbarShop" class="general">Shop</a></li>
-        <li><a id="navbarTravelling" class="general">Travelling</a></li>
+        <li><a id="navbarTraveling" class="general">Traveling</a></li>
         <li><a id="navbarAchievements">Achievements</a></li>
         <li><a id="navbarSettings">Settings</a></li>
     </ul>
     <div id="gameDiv">
+        <div class="generalDiv">
+            <span>Zone Level: </span><span id="zoneLevelID">I</span>
+            <br>
+            <br>
+            <button id="zoneLevelUpButton" class="redButton">
+                <span>Level up!</span>
+            </button>
+            <span id="zoneLevelUpCostID">250</span><span> TP and </span><span id="zoneLimitID2">100</span><span> talks</span>
+        </div>
         <div class="generalDiv">
             <span>Talks: </span><span id="talkAmountID">0</span><span>/</span><span id="zoneLimitID">100</span>
             <span id="talkTimeCounterID" class="general"><span> (</span><span id="talkTimeID">0</span><span>sec)</span></span>
@@ -33,6 +42,10 @@
             </button>
             <br>
             <span>Resistance: </span><span id="resistanceAmountID">0</span><span> %</span>
+            <br>
+            <div id="hateDiv" class="general">
+                <span>Hate: </span><span id="hateAmountID">0</span><span> %</span>
+            </div>
         </div>
         <div id="workDiv" class="general">
             <span>Coins: </span><span id="coinAmountID">0</span>
@@ -65,7 +78,7 @@
                 <span>Level up! (</span><span id="motivationLevelUpCostID">0</span><span> SP)</span>
             </button>
             <br>
-            <span> (</span><span id="motivationPowerID">0</span><span>/sec)</span><span> (Talk / 10000)</span>
+            <span> (</span><span id="motivationPowerID">0</span><span>/sec)</span><span> (Talk / 5000)</span>
             <br>
             <span> SP bonus: </span><span id="motivationSPBonusID">0</span><span> (Motivation level / </span><span id="motivationSPRatioID">100</span><span>)</span>
         </div>
@@ -91,6 +104,37 @@
                 </button>
                 <span>-1% resistance </span>
                 <span id="shopTime06CounterID" class="general"><span>(</span><span id="shopTime06">0</span><span> sec)</span></span><span id="resistanceLevelMaxID" class="general"> (Max!)</span>
+                <br>
+                <span id="shopHateSpan" class="general">
+                <button id="shopButton11" class="redButton">
+                    <span>Buy! (</span><span id="shopAmountID11C">30</span><span> C)</span>
+                </button>
+                <span>-1% hate </span>
+                <span id="shopTime11CounterID" class="general"><span>(</span><span id="shopTime11">0</span><span> sec)</span></span><span id="hateLevelMaxID" class="general"> (Max!)</span></span>
+            
+            </div>
+            <div id="shopTravelDiv" class="general">
+                <span id="shopItem08">
+                    <button id="shopButton08" class="redButton">
+                        <span>Buy! (</span><span id="shopAmountID08C">20</span><span> C)</span>
+                    </button>
+                    <span>-1 travel sec (Current: </span><span id="shopTravelWaitTimeMaxID">10</span><span>) </span>
+                    <span id="shopTime08CounterID" class="general"><span>(</span><span id="shopTime08">0</span><span> sec)</span></span>
+                    <br>
+                </span>
+                <span id="shopItem09">
+                    <button id="shopButton09" class="redButton">
+                        <span>Buy! (</span><span id="shopAmountID09C">15</span><span> C)</span>
+                    </button>
+                    <span>-1 tired points </span>
+                    <span id="shopTime09CounterID" class="general"><span>(</span><span id="shopTime09">0</span><span> sec)</span></span>
+                    <br>
+                </span>
+                <button id="shopButton10" class="redButton">
+                    <span>Buy! (</span><span id="shopAmountID10C">5</span><span> C)</span>
+                </button>
+                <span>+2 tired points limit </span>
+                <span id="shopTime10CounterID" class="general"><span>(</span><span id="shopTime10">0</span><span> sec)</span></span>
             </div>
             <br>
             <br>
@@ -109,14 +153,14 @@
                 <br>
                 <span id="shopItem03">
                     <button id="shopButton03" class="redButton">
-                        <span>Buy! (</span><span id="shopAmountID03SP">1</span><span> SP)</span>
+                        <span>Buy! (</span><span id="shopAmountID03SP">0.7</span><span> SP)</span>
                     </button>
                     <span>-1 work sec (Current: </span><span id="shopWorkWaitTimeMaxID">30</span><span>) </span>
                     <span id="shopTime03CounterID" class="general"><span>(</span><span id="shopTime03">0</span><span> sec)</span></span>
                     <br>
                 </span>
                 <button id="shopButton04" class="redButton">
-                    <span>Buy! (</span><span id="shopAmountID04SP">1</span><span> SP)</span>
+                    <span>Buy! (</span><span id="shopAmountID04SP">0.7</span><span> SP)</span>
                 </button>
                 <span>+2% double coin chance </span><span>(</span><span id="workDoubleChanceID">0</span><span>%)</span>
                 <span id="shopTime04CounterID" class="general"><span>(</span><span id="shopTime04">0</span><span> sec)</span></span>
@@ -133,9 +177,33 @@
             </div>
         </div>
     </div>
-    <div id="travellingDiv" class="general">
+    <div id="travelingDiv" class="general">
         <div class="generalDiv">
-            <span>Congratulations! You have reached the end of version 0.0.1!</span>
+            <span>Travel Points: </span><span id="travelPointsAmountID">0</span>
+            <br>
+            <button id="travelButton" class="greenButton">
+                <span>Travel! </span><span>(</span><span id="travelWaitTimeCurrentID">10</span><span>)</span>
+            </button>
+            <span>+</span><span id="TravelPowerID">0</span><span> Travel Points and +<span id="tiredTravelID">10</span> Tired Points</span>
+            <br>
+            <span>[TP = (Total Works + Total SP) / 10000]</span>
+            <br>
+            <br>
+            <span>Tired Points: </span><span id="tiredPointsID">0</span><span>/</span><span id="tiredLimitID">20</span><span> (-1/sec)</span>
+        </div>
+        <div class="generalDiv">
+            <span>Work Shards: </span><span id="shardWorkAmountID">0</span>
+            <span> (Drop chance: </span><span id="shardWorkChanceID">0.00</span><span> %)</span>
+            <br>
+            <span>SP Shards: </span><span id="shardSPAmountID">0</span>
+            <span> (Drop chance: </span><span id="shardSPChanceID">0.00</span><span> %)</span>
+            <br>
+            <span>Motivation Shards: </span><span id="shardMotivationAmountID">0</span>
+            <span> (Drop chance: </span><span id="shardMotivationChanceID">0.00</span><span> %)</span>
+        </div>
+        <div id="forgeDiv" class="general">
+            <p>Forge</p>
+            <p>End Game of v0.1.1</p>
         </div>
     </div>
     <div id="achievementsDiv" class="general">
@@ -149,13 +217,13 @@
             <span>Total study points: </span><span id="studyPointsTotalAmountID">0</span>
             <br>
             <span>Achievements:</span>
-            <span id="achEarnedAmountID">0</span><span> / </span><span id="achAllAmountID">25</span><span> (</span><span id="achEarnedPercentID">0</span><span> %)</span>
+            <span id="achEarnedAmountID">0</span><span> / </span><span id="achAllAmountID">43</span><span> (</span><span id="achEarnedPercentID">0</span><span> %)</span>
             <div id="achievementDiv01" class="achievementDiv2">Talk with 10 people | Bonus: working is enabled!</div>
             <div id="achievementDiv02" class="achievementDiv2">Talk with 20 people | Bonus: +0.04 max coins</div>
-            <div id="achievementDiv03" class="achievementDiv2">Talk with 40 people | Bonus: +0.16 max coins</div>
-            <div id="achievementDiv04" class="achievementDiv2">Talk with 80 people | Bonus: +0.32 max coins</div>
-            <div id="achievementDiv05" class="achievementDiv2">Talk with 100 people | Bonus: travelling is enabled</div>
-            <div id="achievementDiv06" class="achievementDiv2">Try talk with 25 people | Bonus: +0.04 max coins</div>
+            <div id="achievementDiv03" class="achievementDiv2">Talk with 25 people | Bonus: traveling is enabled</div>
+            <div id="achievementDiv04" class="achievementDiv2">Talk with 40 people | Bonus: +0.16 max coins</div>
+            <div id="achievementDiv05" class="achievementDiv2">Talk with 100 people | Bonus: +0.32 max coins</div>
+            <div id="achievementDiv06" class="achievementDiv2">Try talk with 30 people | Bonus: +0.04 max coins</div>
             <div id="achievementDiv07" class="achievementDiv2">Try talk with 50 people | Bonus: +0.08 max coins</div>
             <div id="achievementDiv08" class="achievementDiv2">Try talk with 75 people | Bonus: +0.12 max coins</div>
             <div id="achievementDiv09" class="achievementDiv2">Try talk with 100 people | Bonus: +0.16 max coins</div>
@@ -169,12 +237,30 @@
             <div id="achievementDiv16" class="achievementDiv2">Work 200 times | Bonus: double SP chance: +4%</div>
             <div id="achievementDiv17" class="achievementDiv2">Reduce work wait time max to 15 | Bonus: working is automated!</div>
             <div id="achievementDiv18" class="achievementDiv2">Total Study Points: 1.8 | Bonus: motivation is enabled!</div>
-            <div id="achievementDiv19" class="achievementDiv2">Total Study Points: 5 | Bonus: +2/10000 m/s</div>
-            <div id="achievementDiv20" class="achievementDiv2">Total Study Points: 10 | Bonus: +3/10000 m/s</div>
-            <div id="achievementDiv21" class="achievementDiv2">Total Study Points: 25 | Bonus: +4/10000 m/s</div>
-            <div id="achievementDiv22" class="achievementDiv2">Total Study Points: 50 | Bonus: +6/10000 m/s</div>
-            <div id="achievementDiv23" class="achievementDiv2">Total Study Points: 100 | Bonus: +8/10000 m/s</div>
-            <div id="achievementDiv24" class="achievementDiv2">Total Study Points: 250 | Bonus: +10/10000 m/s</div>
+            <div id="achievementDiv19" class="achievementDiv2">Total Study Points: 5 | Bonus: +2/10000 M/s</div>
+            <div id="achievementDiv20" class="achievementDiv2">Total Study Points: 10 | Bonus: +3/10000 M/s</div>
+            <div id="achievementDiv21" class="achievementDiv2">Total Study Points: 25 | Bonus: +4/10000 M/s</div>
+            <div id="achievementDiv22" class="achievementDiv2">Total Study Points: 50 | Bonus: +6/10000 M/s</div>
+            <div id="achievementDiv23" class="achievementDiv2">Total Study Points: 100 | Bonus: +8/10000 M/s</div>
+            <div id="achievementDiv24" class="achievementDiv2">Total Study Points: 250 | Bonus: +10/10000 M/s</div>
+            <div id="achievementDiv26" class="achievementDiv2">Earn 1 Work Shard | Bonus: -10% Coin price in shop</div>
+            <div id="achievementDiv27" class="achievementDiv2">Earn 10 Work Shard | Bonus: -15% Coin price in shop</div>
+            <div id="achievementDiv28" class="achievementDiv2">Earn 50 Work Shard | Bonus: -20% Coin price in shop</div>
+            <div id="achievementDiv29" class="achievementDiv2">Earn 200 Work Shard | Bonus: +10% Coin/s</div>
+            <div id="achievementDiv30" class="achievementDiv2">Earn 500 Work Shard | Bonus: +15% Coin/s</div>
+            <div id="achievementDiv31" class="achievementDiv2">Earn 1000 Work Shard | Bonus: +20% Coin/s</div>
+            <div id="achievementDiv32" class="achievementDiv2">Earn 1 SP Shard | Bonus: -10% work sec price</div>
+            <div id="achievementDiv33" class="achievementDiv2">Earn 10 SP Shard | Bonus: -10% min coin price</div>
+            <div id="achievementDiv34" class="achievementDiv2">Earn 50 SP Shard | Bonus: -10% max coin price</div>
+            <div id="achievementDiv35" class="achievementDiv2">Earn 200 SP Shard | Bonus: -10% double coin price</div>
+            <div id="achievementDiv36" class="achievementDiv2">Earn 500 SP Shard | Bonus: +10% double SP chance</div>
+            <div id="achievementDiv37" class="achievementDiv2">Earn 1000 SP Shard | Bonus: SP limit 2 -> 4</div>
+            <div id="achievementDiv38" class="achievementDiv2">Earn 1 Motivation Shard | Bonus: -4 motivation ratio reduction</div>
+            <div id="achievementDiv39" class="achievementDiv2">Earn 10 Motivation Shard | Bonus: -8 motivation ratio reduction</div>
+            <div id="achievementDiv40" class="achievementDiv2">Earn 50 Motivation Shard | Bonus: -12 motivation ratio reduction</div>
+            <div id="achievementDiv41" class="achievementDiv2">Earn 200 Motivation Shard | Bonus: -16 motivation ratio reduction</div>
+            <div id="achievementDiv42" class="achievementDiv2">Earn 500 Motivation Shard | Bonus: Motivation Level UP price -50%</div>
+            <div id="achievementDiv43" class="achievementDiv2">Earn 1000 Motivation Shard | Bonus: +10% M/sec</div>
         </div>
     </div>
     <div id="achievementEarnedID" class="achievementDiv">
@@ -188,36 +274,36 @@
             <button id="saveButton" class="greenButton" type="submit">Save</button>
             <button id="deleteButton" class="redButton" type="submit">Delete</button>
             <p>WARNING! The save may be lost during a version update!</p>
-            <p>Version: 0.0.1 (2023.08.17.)</p>
+            <p>Version: 0.1.0 (2023.10.12.)</p>
 
-            <p>Upcoming:</p>
-            <span>- Travelling</span>
-            <br>
-            <span>- More zones</span>
-            <br>
-            <span>- More achievements and achievement bonus!</span>
-            <br>
-            <span>- Shards</span>
-            <br>
-            <span>- Offline progress</span>
+            <dl>
+                <dt>Upcoming:</dt>
+                <dd>- Offline progress</dd>
+                <dd>- Forge</dd>
+            </dl> 
+            
             <p>Changelog:</p>
-            <span>v0.0.1:</span>
-            <br>
-            <span>- Added: Talk</span>
-            <br>
-            <span>- Added: Work</span>
-            <br>
-            <span>- Added: Study</span>
-            <br>
-            <span>- Added: Motivation</span>
-            <br>
-            <span>- Added: Shop</span>
-            <br>
-            <span>- Added: Travelling (End Game!)</span>
-            <br>
-            <span>- Added: Achievements</span>
-            <br>
-            <span>- Added: Save/Load</span>
+            <dl>
+                <dt>v0.1.0 (2023.10.12):</dt>
+                    <dd>- Added: Traveling</dd>
+                    <dd>- Added: Zones</dd>
+                    <dd>- Added: Shards</dd>
+                    <dd>- Added: Hate</dd>
+                    <dd>- Added: More achievements</dd>
+                    <dd>- Added: More shop items</dd>
+                    <dd>- Modified: Achievement "Talk with 100 people | Bonus: traveling is enabled" reduced to 25</dd>
+                    <dd>- Modified: Shop work sec and double coin chance price and grow rate reduced</dd>
+                    <dd>- Modified: Motivation limits reduced, Motivation formula changed: 10000 -> 5000</dd>
+                <dt>v0.0.1 (2023.08.17):</dt>
+                    <dd>- Added: Talk</dd>
+                    <dd>- Added: Work</dd>
+                    <dd>- Added: Study</dd>
+                    <dd>- Added: Motivation</dd>
+                    <dd>- Added: Shop</dd>
+                    <dd>- Added: Traveling (End Game!)</dd>
+                    <dd>- Added: Achievements</dd>
+                    <dd>- Added: Save/Load</dd>
+            </dl>
         </div>
     </div>
     <script type="module" src="index.js"></script>
