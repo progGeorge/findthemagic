@@ -3,12 +3,12 @@ import { isTalkAutomated } from "./resources.js";
 const myModal = document.getElementById("myModal");
 const gameDiv = document.getElementById("gameDiv");
 const shopDiv = document.getElementById("shopDiv");
-const travellingDiv = document.getElementById("travellingDiv");
+const travelingDiv = document.getElementById("travelingDiv");
 const achievementsDiv = document.getElementById("achievementsDiv");
 const settingsDiv = document.getElementById("settingsDiv");
 const navbarGame = document.getElementById("navbarGame");
 const navbarShop = document.getElementById("navbarShop");
-const navbarTravelling = document.getElementById("navbarTravelling");
+const navbarTraveling = document.getElementById("navbarTraveling");
 const navbarAchievements = document.getElementById("navbarAchievements");
 const navbarSettings = document.getElementById("navbarSettings");
 const talkButton = document.getElementById("talkButton");
@@ -22,6 +22,8 @@ const talkTimeID = document.getElementById("talkTimeID");
 const talkTimeCounterID = document.getElementById("talkTimeCounterID");
 const resistanceAmountID = document.getElementById("resistanceAmountID");
 const resistanceLevelMaxID = document.getElementById("resistanceLevelMaxID");
+const hateLevelMaxID = document.getElementById("hateLevelMaxID");
+const hateAmountID = document.getElementById("hateAmountID");
 const talkTotalAmountID = document.getElementById("talkTotalAmountID");
 const achievementID = document.getElementById("achievementID");
 const achievementEarnedID = document.getElementById("achievementEarnedID");
@@ -54,6 +56,8 @@ const studyPointsLevelUpCostID = document.getElementById("studyPointsLevelUpCost
 const shopItem03 = document.getElementById("shopItem03");
 const shopItem05 = document.getElementById("shopItem05");
 const shopItem07 = document.getElementById("shopItem07");
+const shopItem08 = document.getElementById("shopItem08");
+const shopItem09 = document.getElementById("shopItem09");
 const shopAmountID01SP = document.getElementById("shopAmountID01SP");
 const shopAmountID02SP = document.getElementById("shopAmountID02SP");
 const shopAmountID03SP = document.getElementById("shopAmountID03SP");
@@ -61,21 +65,30 @@ const shopAmountID04SP = document.getElementById("shopAmountID04SP");
 const shopAmountID05C = document.getElementById("shopAmountID05C");
 const shopAmountID06C = document.getElementById("shopAmountID06C");
 const shopAmountID07M = document.getElementById("shopAmountID07M");
-const shopAmountID08M = document.getElementById("shopAmountID08M");
+const shopAmountID08C = document.getElementById("shopAmountID08C");
+const shopAmountID09C = document.getElementById("shopAmountID09C");
+const shopAmountID10C = document.getElementById("shopAmountID10C");
+const shopAmountID11C = document.getElementById("shopAmountID11C");
 const shopStudyPointsDisplayID = document.getElementById("shopStudyPointsDisplayID");
 const shopMotivationDisplayID = document.getElementById("shopMotivationDisplayID");
 const shopTalkDiv = document.getElementById("shopTalkDiv");
 const shopCoinDiv = document.getElementById("shopCoinDiv");
 const shopStudyPointsDiv = document.getElementById("shopStudyPointsDiv");
 const shopMotivationDiv = document.getElementById("shopMotivationDiv");
+const shopTravelDiv = document.getElementById("shopTravelDiv");
 const shopWorkWaitTimeMaxID = document.getElementById("shopWorkWaitTimeMaxID");
 const shopTalkWaitTimeMaxID = document.getElementById("shopTalkWaitTimeMaxID");
+const shopTravelWaitTimeMaxID = document.getElementById("shopTravelWaitTimeMaxID");
 const shopTime01CounterID = document.getElementById("shopTime01CounterID");
 const shopTime02CounterID = document.getElementById("shopTime02CounterID");
 const shopTime03CounterID = document.getElementById("shopTime03CounterID");
 const shopTime04CounterID = document.getElementById("shopTime04CounterID");
 const shopTime05CounterID = document.getElementById("shopTime05CounterID");
 const shopTime06CounterID = document.getElementById("shopTime06CounterID");
+const shopTime08CounterID = document.getElementById("shopTime08CounterID");
+const shopTime09CounterID = document.getElementById("shopTime09CounterID");
+const shopTime10CounterID = document.getElementById("shopTime10CounterID");
+const shopTime11CounterID = document.getElementById("shopTime11CounterID");
 const motivationDiv = document.getElementById("motivationDiv");
 const motivationAmountID = document.getElementById("motivationAmountID");
 const motivationAmountID2 = document.getElementById("motivationAmountID2");
@@ -87,6 +100,22 @@ const motivationLevelUpCostID = document.getElementById("motivationLevelUpCostID
 const motivationSPBonusID = document.getElementById("motivationSPBonusID");
 const motivationSPRatioID = document.getElementById("motivationSPRatioID");
 const motivationLevelMaxID = document.getElementById("motivationLevelMaxID");
+const travelPointsAmountID = document.getElementById("travelPointsAmountID");
+const travelWaitTimeCurrentID = document.getElementById("travelWaitTimeCurrentID");
+const tiredPointsID = document.getElementById("tiredPointsID");
+const tiredTravelID = document.getElementById("tiredTravelID");
+const tiredLimitID = document.getElementById("tiredLimitID");
+const TravelPowerID = document.getElementById("TravelPowerID");
+const shardWorkAmountID = document.getElementById("shardWorkAmountID");
+const shardSPAmountID = document.getElementById("shardSPAmountID");
+const shardMotivationAmountID = document.getElementById("shardMotivationAmountID");
+const shardWorkChanceID = document.getElementById("shardWorkChanceID");
+const shardSPChanceID = document.getElementById("shardSPChanceID");
+const shardMotivationChanceID = document.getElementById("shardMotivationChanceID");
+const zoneLevelID = document.getElementById("zoneLevelID");
+const zoneLimitID = document.getElementById("zoneLimitID");
+const zoneLimitID2 = document.getElementById("zoneLimitID2");
+const zoneLevelUpCostID = document.getElementById("zoneLevelUpCostID");
 const shopTime01 = document.getElementById("shopTime01");
 const shopTime02 = document.getElementById("shopTime02");
 const shopTime03 = document.getElementById("shopTime03");
@@ -95,9 +124,16 @@ const shopTime05 = document.getElementById("shopTime05");
 const shopTime06 = document.getElementById("shopTime06");
 const shopTime07 = document.getElementById("shopTime07");
 const shopTime08 = document.getElementById("shopTime08");
+const shopTime09 = document.getElementById("shopTime09");
+const shopTime10 = document.getElementById("shopTime10");
+const shopTime11 = document.getElementById("shopTime11");
+const forgeDiv = document.getElementById("forgeDiv");
 
-const navbarDivs = [gameDiv, shopDiv, travellingDiv, achievementsDiv, settingsDiv];
-const navbars = [navbarGame, navbarShop, navbarTravelling, navbarAchievements, navbarSettings];
+const hateDiv = document.getElementById("hateDiv");
+const shopHateSpan = document.getElementById("shopHateSpan");
+
+const navbarDivs = [gameDiv, shopDiv, travelingDiv, achievementsDiv, settingsDiv];
+const navbars = [navbarGame, navbarShop, navbarTraveling, navbarAchievements, navbarSettings];
 
 function roundNumbers(input){
     let output = Math.round(input * 1000000)/1000000;
@@ -147,6 +183,14 @@ export function refreshResistanceAmount (resistanceAmount) {
 
 export function refreshResistanceMax () {
     resistanceLevelMaxID.classList.remove('general');
+}
+
+export function refreshHateMax () {
+    hateLevelMaxID.classList.remove('general');
+}
+
+export function refreshHateAmount (hateAmount) {
+    hateAmountID.textContent = 100 - hateAmount * 100;
 }
 
 export function refreshTalkTotalAmount (talkTotalAmount) {
@@ -287,7 +331,16 @@ export function refreshShopAmountID ({ID, shopAmount}) {
             shopAmountID07M.textContent = roundNumbers(shopAmount);
         break;
         case 8:
-            shopAmountID08M.textContent = shopAmount;
+            shopAmountID08C.textContent = shopAmount;
+        break;
+        case 9:
+            shopAmountID09C.textContent = shopAmount;
+        break;
+        case 10:
+            shopAmountID10C.textContent = shopAmount;
+        break;
+        case 11:
+            shopAmountID11C.textContent = shopAmount;
         break;
     }
 }
@@ -304,6 +357,11 @@ export function refreshWorkAutomation() {
 
     shopTime05CounterID.classList.remove('general');
     shopTime06CounterID.classList.remove('general');
+    shopTime08CounterID.classList.remove('general');
+    shopTime09CounterID.classList.remove('general');
+    shopTime10CounterID.classList.remove('general');
+    shopTime11CounterID.classList.remove('general');
+
 }
 
 export function refreshTalkAutomation() {
@@ -383,7 +441,82 @@ export function refreshShopTime ({ ID: ID, time: time }) {
         case 8:
             shopTime08.textContent = time;
         break
+        case 9:
+            shopTime09.textContent = time;
+        break
+        case 10:
+            shopTime10.textContent = time;
+        break
+        case 11:
+            shopTime11.textContent = time;
+        break
     }
+}
+
+export function refreshTravelPoints (travelPoints) {
+    travelPointsAmountID.textContent = roundNumbers(travelPoints);
+}
+
+export function refreshTravelWaitTimeCurrent (travelWaitTimeCurrent) {
+    travelWaitTimeCurrentID.textContent = travelWaitTimeCurrent;
+}
+
+export function refreshTravelWaitTimeMax (travelWaitTimeMax) {
+    travelWaitTimeCurrentID.textContent = travelWaitTimeMax;
+    shopTravelWaitTimeMaxID.textContent = travelWaitTimeMax;
+}
+
+export function refreshTiredPoints (tiredPoints) {
+    tiredPointsID.textContent = tiredPoints.toFixed(1);
+}
+
+export function refreshTiredTravel (tiredTravel) {
+    tiredTravelID.textContent = roundNumbers(tiredTravel);
+}
+
+export function refreshTiredLimit (tiredLimit) {
+    tiredLimitID.textContent = tiredLimit.toFixed(1);
+}
+
+export function refreshTravelPower (travelPower) {
+    TravelPowerID.textContent = travelPower.toFixed(4);
+}
+
+export function refreshShardWorkAmount (shardWork) {
+    shardWorkAmountID.textContent = shardWork.toFixed(2);
+}
+
+export function refreshShardSPAmount (shardSP) {
+    shardSPAmountID.textContent = shardSP.toFixed(2);
+}
+
+export function refreshShardMotivationAmount (shardMotivation) {
+    shardMotivationAmountID.textContent = shardMotivation.toFixed(2);
+}
+
+export function refreshShardWorkChance (shardWorkChance) {
+    shardWorkChanceID.textContent = shardWorkChance.toFixed(2);
+}
+
+export function refreshShardSPChance (shardSPChance) {
+    shardSPChanceID.textContent = shardSPChance.toFixed(2);
+}
+
+export function refreshShardMotivationChance (shardMotivationChance) {
+    shardMotivationChanceID.textContent = shardMotivationChance.toFixed(2);
+}
+
+export function refreshzoneLevel (zoneLevel) {
+    zoneLevelID.textContent = zoneLevel;
+}
+
+export function refreshZoneLimit (zoneLimit) {
+    zoneLimitID.textContent = zoneLimit;
+    zoneLimitID2.textContent = zoneLimit;
+}
+
+export function refreshZoneLevelUpCost (zoneLevelUpCost) {
+    zoneLevelUpCostID.textContent = zoneLevelUpCost;
 }
 
 export function displayNone (ID) {
@@ -402,6 +535,12 @@ export function displayNone (ID) {
         break
         case 5:
             shopItem07.style.display = "none";
+        break
+        case 6:
+            shopItem08.style.display = "none";
+        break
+        case 7:
+            shopItem09.style.display = "none";
         break
     }
 }
@@ -435,6 +574,17 @@ export function showMotivation () {
     shopMotivationDiv.classList.remove('general');
 }
 
-export function showTravelling () {
-    navbarTravelling.classList.remove('general');
+export function showTraveling () {
+    navbarTraveling.classList.remove('general');
+    shopTravelDiv.classList.remove('general');
+}
+
+export function showHate () {
+    hateDiv.classList.remove('general');
+    shopHateSpan.classList.remove('general');
+}
+
+export function showForge () {
+    forgeDiv.classList.remove('general');
+    forgeDiv.classList.add('generalDiv');
 }
